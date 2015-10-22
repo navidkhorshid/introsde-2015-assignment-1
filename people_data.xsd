@@ -1,0 +1,86 @@
+<xsd:schema
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="people" type="peopleType"/>
+
+    <xsd:complexType name="peopleType">
+        <xsd:sequence>
+            <xsd:element name="person" type="personType" minOccurs="0" maxOccurs="9999"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="personType">
+        <xsd:sequence>
+            <xsd:element name="firstname">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="100"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <xsd:element name="lastname">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="100"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <xsd:element name="birthdate">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:pattern value="[1-2]([0-9]){3}[-][0-1][0-9][-][0-3][0-9][T][0-2][0-9][:][0-5][0-9][:][0-5][0-9][.]([0-9]){3}[+|-][0-1]{0,1}[0-9][:][0-5][0-9]"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <xsd:element name="healthprofile" type="healthProfileType" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+
+        <xsd:attribute name="id">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:positiveInteger">
+                    <xsd:minInclusive value="1"/>
+                    <xsd:maxInclusive value="9999"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="healthProfileType">
+        <xsd:sequence>
+            <xsd:element name="lastupdate">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:pattern value="[1-2]([0-9]){3}[-][0-1][0-9][-][0-3][0-9][T][0-2][0-9][:][0-5][0-9][:][0-5][0-9][.]([0-9]){3}[+|-][0-1]{0,1}[0-9][:][0-5][0-9]"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <xsd:element name="weight">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:double">
+                        <xsd:minInclusive value="0"/>
+                        <xsd:maxInclusive value="200"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="height">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:double">
+                        <xsd:minInclusive value="0"/>
+                        <xsd:maxInclusive value="3"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="bmi">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:double">
+                        <xsd:minInclusive value="0"/>
+                        <xsd:maxInclusive value="200"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
