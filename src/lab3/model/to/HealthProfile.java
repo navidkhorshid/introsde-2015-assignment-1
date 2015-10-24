@@ -5,6 +5,9 @@ import org.w3c.dom.NodeList;
 
 /**
  * Created by Navid on 10/19/2015.
+ *
+ * HealthProfile Class
+ * Including 3 constructors, getters and setters, and a print method
  */
 public class HealthProfile
 {
@@ -13,22 +16,31 @@ public class HealthProfile
 	private double height; // in m
 	private double bmi;
 
+	/**
+	 * Constructor using (lastupdate, weight, height)
+	 */
 	public HealthProfile(String lastupdate, double weight, double height)
 	{
 		this.lastupdate = lastupdate;
 		this.weight = weight;
 		this.height = height;
-		this.bmi = weight/(height*height);
+		this.bmi = weight/(height*height); //calculating BMI
 	}
 
+	/**
+	 * Constructor using ()
+	 */
 	public HealthProfile()
 	{
 		this.lastupdate = "";
 		this.weight = 0;
 		this.height = 1;
-		this.bmi = weight/(height*height);
+		this.bmi = weight/(height*height); //calculating BMI
 	}
 
+	/**
+	 * Constructor using (NodeList)
+	 */
 	public HealthProfile(NodeList healthProfileDetails)
 	{
 		for (int k = 0; k < healthProfileDetails.getLength(); k++) {
@@ -131,6 +143,9 @@ public class HealthProfile
 		}
 	}
 
+	/**
+	 * Prints all the details of HealthProfile
+	 */
 	public void printHealthProfile()
 	{
 		System.out.println("Last Update: \t" + this.lastupdate);

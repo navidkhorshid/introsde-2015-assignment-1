@@ -98,7 +98,7 @@
 		</copy>
 	</target>
 
-	<!-- Executes Evaluation: running instructions 1,2,3,4 based on Lab 3 AND instructions 2,3 based on Lab 4-->
+	<!-- Executes Evaluation: COMPILE & running instructions 1,2,3,4 based on Lab 3 AND instructions 2,3 based on Lab 4-->
 	<target name="execute.evaluation" depends="compile, execute.lab3 ,execute.JAXBMarshaller, execute.JAXBUnMarshaller, execute.JAXBMarshallerJSON">
 		<echo message="Executing Evaluation" />
 	</target>
@@ -150,6 +150,4 @@
 			</classpath>
 		</java>
 	</target>
-
-
 </project>

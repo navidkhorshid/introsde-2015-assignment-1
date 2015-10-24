@@ -8,6 +8,9 @@ import static people.Person_HealthProfile_Util.constructPerson;
 
 /**
  * Created by Navid on 10/22/2015.
+ *
+ * Class InitializeData
+ * Including getSomePeople() method to create some data for JAXBMarshaller and JAXBMarshallerJSON
  */
 public class InitializeData {
 
@@ -15,6 +18,7 @@ public class InitializeData {
     {
         ObjectFactory factory = new people.generated.ObjectFactory();
         PeopleType people = new PeopleType();
+
 
         PersonType person = constructPerson(factory, "1","Paul","Pogba","1973-06-28T15:19:44.000+2:00",
                 "2014-05-08T21:16:51.000+2:00", 80, 1.88, 22.63467632);

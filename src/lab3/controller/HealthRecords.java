@@ -10,6 +10,10 @@ import org.xml.sax.SAXException;
 
 /**
  * Created by Navid on 10/19/2015.
+ *
+ * Class HealthRecords
+ * Including all the methods which are going to be executed from View (Start Class):
+ * lab3_1_1(long), lab3_1_2(long), lab3_2(), lab3_3(long), lab3_4(String, String)
  */
 public class HealthRecords
 {
@@ -78,7 +82,4 @@ public class HealthRecords
 			System.out.println(e.getMessage());
 		}
 	}
-
-
-
 }

@@ -1,37 +1,43 @@
 package people;
 
 import people.generated.*;
-
 import javax.xml.bind.*;
 import javax.xml.validation.SchemaFactory;
-import javax.xml.validation.Schema;
-
 import org.xml.sax.SAXException;
-
 import java.io.*;
-import java.util.List;
 
+/**
+ * Class JAXUnMarshaller
+ * Creating Java objects from an XML file and printing them.
+ */
 public class JAXBUnMarshaller
 {
+	public static void main(String[] argv)
+	{
+		//Reading from 'people_type.xml' and creating Java objects using generateJSONDocument(File)
+		new JAXBUnMarshaller().unMarshalXMLDocument(new File("people_type.xml"));
+	}
+
+	/**
+	 * UnMarshaller (XML to Java objects)
+	 */
 	public void unMarshalXMLDocument(File xmlDocument)
 	{
 		try
 		{
-			JAXBContext jaxbContext = JAXBContext.newInstance("people.generated");
+			JAXBContext jaxbContext = JAXBContext.newInstance("people.generated"); //getting context from '\generated'
 			Unmarshaller unMarshaller = jaxbContext.createUnmarshaller();
-			SchemaFactory schemaFactory = SchemaFactory
-					.newInstance("http://www.w3.org/2001/XMLSchema");
-			Schema schema = schemaFactory.newSchema(new File("people_data.xsd"));
-			unMarshaller.setSchema(schema);
+			SchemaFactory schemaFactory = SchemaFactory.newInstance("http://www.w3.org/2001/XMLSchema");
+			//setting schema of '.xsd' file
+			unMarshaller.setSchema(schemaFactory.newSchema(new File("people_data.xsd")));
 			CustomValidationEventHandler validationEventHandler = new CustomValidationEventHandler();
+			//Setting event handler to CustomValidationEventHandler
 			unMarshaller.setEventHandler(validationEventHandler);
-
 			@SuppressWarnings("unchecked")
 			JAXBElement<PeopleType> peopleElement = (JAXBElement<PeopleType>) unMarshaller.unmarshal(xmlDocument);
-
-			PeopleType people = peopleElement.getValue();
+			PeopleType people = (PeopleType) peopleElement.getValue();
 			List<PersonType> personList = people.getPerson();
-			//Printing all the list
+			//Printing all the Person list using a method from Person_HealthProfile_Util class
 			new Person_HealthProfile_Util().printPersonDetails(personList);
 		}
         catch (JAXBException e) {
@@ -42,13 +48,9 @@ public class JAXBUnMarshaller
 		}
 	}
 
-	public static void main(String[] argv)
-	{
-		File xmlDocument = new File("people_type.xml");
-		JAXBUnMarshaller jaxbUnmarshaller = new JAXBUnMarshaller();
-		jaxbUnmarshaller.unMarshalXMLDocument(xmlDocument);
-	}
-
+	/**
+	 * Validation handler for UnMarshaller
+	 */
 	class CustomValidationEventHandler implements ValidationEventHandler {
 		public boolean handleEvent(ValidationEvent event) {
 			if (event.getSeverity() == ValidationEvent.WARNING) {

@@ -7,15 +7,21 @@ import java.util.Calendar;
 
 /**
  * Created by Navid on 10/19/2015.
+ *
+ * Person Class
+ * Including 3 constructors, getters and setters, and a print method
  */
 public class Person
 {
 	private Long personId;
-	private String firstname;		// this is an attribute of the class String, and it is 'private'
-	private String lastname;		// this is an attribute of the class String
+	private String firstname;
+	private String lastname;
 	private String birthdate;
 	private HealthProfile hProfile;	// this is an attribute of the class HealthProfile
 
+	/**
+	 * Constructor using (personId, firstname, lastname, birthdate, hProfile)
+	 */
 	public Person(Long personId, String fname, String lname, String birthdate, HealthProfile hp) {
 		this.setPersonId(personId);
 		this.setFirstname(fname);
@@ -23,7 +29,10 @@ public class Person
 		this.setBirthdate(birthdate);
 		this.hProfile=hp;
 	}
-	
+
+	/**
+	 * Constructor using (personId, firstname, lastname, birthdate)
+	 */
 	public Person(Long personId, String fname, String lname, String birthdate)
 	{
 		this.setPersonId(personId);
@@ -32,16 +41,10 @@ public class Person
 		this.setBirthdate(birthdate);
 		this.hProfile=new HealthProfile();
 	}
-	
-	public Person()
-	{
-		this.firstname="";
-		this.lastname="";
-		this.hProfile=new HealthProfile();
-		this.personId = Math.round(Math.floor(Math.random()*9998)+1);
-		this.birthdate = this.getRandomDate();
-	}
 
+	/**
+	 * Constructor using (personId, NodeList)
+	 */
 	public Person(Long personId, NodeList personDetails)
 	{
 		this.personId = personId;
@@ -62,6 +65,7 @@ public class Person
 						this.birthdate = (child.getFirstChild().getNodeValue());
 						break;
 					case "healthprofile":
+						//constructs a new HealthProfile object with <healthprofile> child nodes
 						this.hProfile = new HealthProfile(child.getChildNodes());
 						break;
 					default:
@@ -132,6 +136,9 @@ public class Person
 		this.hProfile = hProfile;
 	}
 
+	/**
+	 * Prints all the details of Person including his HealthProfile details
+	 */
 	public void printPerson()
 	{
 		System.out.println("ID: \t\t" + this.personId);
@@ -140,19 +147,5 @@ public class Person
 		System.out.println("Birthdate: \t\t" + this.birthdate);
 		System.out.println("\t-+[HEALTH PROFILE]+-");
 		this.hProfile.printHealthProfile();
-	}
-
-	private String getRandomDate()
-	{
-		int currentYear = Calendar.getInstance().get(Calendar.YEAR); 		// 1. get the current year
-		int year = (int) Math.round(Math.random()*(currentYear-1950)+1950); // 2. generate a random year 
-																			//    between 1950 and currentYear
-		int month = (int) Math.round(Math.floor(Math.random()*11)+1);		// 3. select a random month of the year
-		int[] months = new int[]{31,28,30,30,31,30,31,31,30,31,30,31};
-		if ((currentYear % 4 == 0) && ((currentYear % 100 != 0) || (currentYear % 400 == 0))) {
-			months[1] = 29;
-		}
-		long day = Math.round(Math.floor(Math.random()*(months[month-1]-1)+1));
-		return ""+year+"-"+month+"-"+day;
 	}
 }
