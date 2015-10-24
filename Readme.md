@@ -2,8 +2,7 @@
 
 ## About the code
 ###What is in '\src'?
-![alt text][mtv]
-[mtv]: (code_structure.png)
+![alt text](/code_structure.png?raw=true "Source Code Structure")
 
 ### 'build.xml', 'ivy.xml', 'people.xml', and 'people_data.xsd'
 
