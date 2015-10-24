@@ -2,9 +2,11 @@
 
 ## About the code
 ###- What is in '\src'?
-![alt text](/code_structure.png?raw=true "Source Code Structure")
 There are two main packages in \src:
-#### \lab3
+
+![alt text](/code_structure.png?raw=true "Source Code Structure")
+
+#### '\lab3'
 This includes the source code for the 1st part of the assignment (Lab#3) based on MVC architecture.  View is using Controller and Controller is connected to the Model where it talks with Business Logic (\bl\User.java).
 - \view\Start: Including 'void main()' for running some tests based on Lab 3 instructions
 - \controller\HealthRecords: Including all the methods which are going to be executed from View (Start Class)
@@ -13,7 +15,7 @@ This includes the source code for the 1st part of the assignment (Lab#3) based o
 - \model\to\HealthProfile: Including 3 constructors, getters and setters, and a print method for HealthProfile data type.
 - \model\to\Person: Including 3 constructors, getters and setters, and a print method for Person data type.
 
-#### \people
+#### '\people'
 This includes the source code for the 2nd part of the assignment (Lab#4)
 - InitializeData: Including getSomePeople() method to create some data for JAXBMarshaller and JAXBMarshallerJSON
 - Person_HealthProfile_Util: Including two methods which are used in 'people' project multiple times
@@ -28,15 +30,15 @@ This includes the source code for the 2nd part of the assignment (Lab#4)
 - people_data.xsd is our XML Schema, and we need this for Lab#4 when want to use JAXBUnMarshaller.
 
 ##Features and tasks
-###Based on Lab 3
-* Use xpath to implement methods like getWeight and getHeight (getWeight(personID) returns weight of a given person, the same for getHeight)
-* Make a function that prints all people in the list with detail
-* A function that accepts id as parameter and prints the HealthProfile of the person with that id
-* A function which accepts a weight and an operator (=, > , <) as parameters and prints people that fulfill that condition (i.e., >80Kg, =75Kg, etc.).
+###Based on Lab 3 ('\lab3\controller\HealthRecords.java')
+* "void lab3_1_1(long personId)" & "void lab3_1_2(long personId)": Uses xpath to implement methods like getWeight and getHeight (getWeight(personID) returns weight of a given person, the same for getHeight)
+* "void lab3_2()": a function that prints all people in the list with detail
+* "void lab3_3(long personId)": a function that accepts id as parameter and prints the HealthProfile of the person with that id
+* "void lab3_4(String weight, String condition)": a function which accepts a weight and an operator (=, > , <) as parameters and prints people that fulfill that condition (i.e., >80Kg, =75Kg, etc.).
 
-###Based on Lab 4
-* Write a java application that does the marshalling and un-marshalling using classes generated with JAXB XJC.
-* Make your java application to convert also JSON
+###Based on Lab 4 ('\people\')
+* "JAXBMarshaller.java" & "JAXBUnMarshaller.java": They do the marshalling and un-marshalling using classes generated with JAXB XJC.
+* "JAXBMarshallerJSON.java"": Makes java application to convert also JSON
 
 ##How to run it
 You simply need to type 'git clone https://github.com/navidkhorshid/introsde-2015-assignment-1.git' in terminal.
