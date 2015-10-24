@@ -45,7 +45,7 @@ public class Person_HealthProfile_Util {
     {
         for (PersonType person : personList) //Iterating through personList
         {
-            System.out.println("ID: \t\t\t" + person.getId());
+            System.out.println("ID: \t\t" + person.getId());
             System.out.println("Firstname: \t\t" + person.getFirstname());
             System.out.println("Lastname: \t\t" + person.getLastname());
             System.out.println("Birthdate: \t\t" + person.getBirthdate());
@@ -53,7 +53,7 @@ public class Person_HealthProfile_Util {
             System.out.println("Last Update: \t" + person.getHealthprofile().getLastupdate());
             System.out.println("Weight: \t\t" + person.getHealthprofile().getWeight());
             System.out.println("Height: \t\t" + person.getHealthprofile().getHeight());
-            System.out.println("BMI: \t\t\t" + person.getHealthprofile().getBmi());
+            System.out.println("BMI: \t\t" + person.getHealthprofile().getBmi());
             System.out.println("_________________");
         }
         System.out.println("=================\nTotal number of people = " + personList.size());
