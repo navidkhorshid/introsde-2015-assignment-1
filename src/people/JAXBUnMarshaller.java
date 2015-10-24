@@ -5,6 +5,7 @@ import javax.xml.bind.*;
 import javax.xml.validation.SchemaFactory;
 import org.xml.sax.SAXException;
 import java.io.*;
+import java.util.List;
 
 /**
  * Class JAXUnMarshaller
